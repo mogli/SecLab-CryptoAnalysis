@@ -1,0 +1,32 @@
+package firstSteps;
+ 
+import java.security.SecureRandom;
+import java.security.Security;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKeyFactory;
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jce.provider.asymmetric.ec.KeyPairGenerator;
+public class Keyring {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Security.addProvider(new BouncyCastleProvider());
+		try {
+			Cipher c = Cipher.getInstance("DES/CBC/PKCS5Padding");
+			System.out.println(c.toString());
+			
+			KeyPairGenerator generator = (KeyPairGenerator) KeyPairGenerator.getInstance("RSA");
+			generator.initialize(4096, new SecureRandom());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

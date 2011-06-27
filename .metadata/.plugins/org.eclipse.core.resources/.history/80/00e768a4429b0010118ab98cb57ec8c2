@@ -1,0 +1,24 @@
+package firstSteps;
+ 
+import java.security.Security;
+
+import javax.crypto.Cipher;
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+public class Keyring {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Security.addProvider(new BouncyCastleProvider());
+		try {
+			Cipher c = Cipher.getInstance("DES/CBC/PKCS5Padding");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

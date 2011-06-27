@@ -1,0 +1,19 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.security.Security;
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Test;
+
+public class KeyRingTest {
+
+	@Test
+	public void testFunction() {
+		Security.addProvider(new BouncyCastleProvider());
+		
+	}
+
+
+}

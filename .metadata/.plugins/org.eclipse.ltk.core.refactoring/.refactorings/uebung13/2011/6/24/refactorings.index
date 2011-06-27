@@ -1,0 +1,3 @@
+1307642721471	Extract method 'analyzeFrequence'
+1307643797355	Extract method 'breakCaesar'
+1307644461510	Rename local variable 'i'

@@ -1,0 +1,7 @@
+package firstSteps;
+
+public interface IKeyring {
+	public IKeyring create(String user, String password);
+	public String encrypt(String user, String filename, String message);
+	public String decrypt(String user, String filename, String password);
+}

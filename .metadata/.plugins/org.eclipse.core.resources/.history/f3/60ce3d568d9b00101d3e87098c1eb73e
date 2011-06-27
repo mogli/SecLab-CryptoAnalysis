@@ -1,0 +1,38 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.security.KeyPair;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.Security;
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jce.provider.asymmetric.ec.KeyPairGenerator;
+import org.junit.Test;
+
+import firstSteps.Keyring;
+
+public class KeyRingTest {
+
+	@Test
+	public void testFunction() {
+		Security.addProvider(new BouncyCastleProvider());
+		try {
+			java.security.KeyPairGenerator generator =  KeyPairGenerator.getInstance("RSA");
+			generator.initialize(4096);
+			KeyPair pair = generator.genKeyPair();
+			Keyring k1 = new Keyring();
+			k1.put("martin", pair, "hallo");
+			PrivateKey priv = pair.getPrivate();
+			PublicKey publ = pair.getPublic();
+			System.out.println(priv.toString());
+			System.out.println(publ.toString());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+}

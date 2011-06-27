@@ -1,0 +1,21 @@
+#Thu Jun 23 12:57:27 CEST 2011
+content_assist_proposals_foreground=0,0,0
+spelling_locale_initialized=true
+content_assist_disabled_computers=org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000
+org.eclipse.jdt.ui.text.templates_migrated=true
+useAnnotationsPrefPage=true
+eclipse.preferences.version=1
+org.eclipse.jface.textfont=1|Monaco|11.0|0|COCOA|1|;
+tabWidthPropagated=true
+org.eclipse.jdt.ui.editor.tab.width=
+fontPropagated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.javadoclocations.migrated=true
+proposalOrderMigrated=true
+content_assist_proposals_background=255,255,255
+org.eclipse.jdt.ui.formatterprofiles.version=11
+content_assist_number_of_computers=19
+useQuickDiffPrefPage=true
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="java.util.Collection"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.util.Set"><rhs name\="java.util.HashSet"/></lhs><lhs name\="java.util.Properties"><rhs name\="org.bouncycastle.jce.provider.BouncyCastleProvider"/></lhs><lhs name\="java.util.Hashtable"><rhs name\="org.bouncycastle.jce.provider.BouncyCastleProvider"/></lhs><lhs name\="java.util.Map"><rhs name\="org.bouncycastle.jce.provider.BouncyCastleProvider"/></lhs><lhs name\="java.lang.Cloneable"><rhs name\="org.bouncycastle.jce.provider.BouncyCastleProvider"/></lhs><lhs name\="java.util.Dictionary"><rhs name\="org.bouncycastle.jce.provider.BouncyCastleProvider"/></lhs><lhs name\="java.security.Provider"><rhs name\="org.bouncycastle.jce.provider.BouncyCastleProvider"/></lhs><lhs name\="java.security.KeyStore"><rhs name\="java.security.KeyStore"/></lhs><lhs name\="javax.crypto.SecretKeyFactory"><rhs name\="javax.crypto.SecretKeyFactory"/></lhs><lhs name\="java.util.Random"><rhs name\="java.security.SecureRandom"/></lhs><lhs name\="java.security.SecureRandom"><rhs name\="java.security.SecureRandom"/></lhs><lhs name\="java.security.spec.KeySpec"><rhs name\="javax.crypto.spec.DESKeySpec"/><rhs name\="java.security.spec.X509EncodedKeySpec"/><rhs name\="java.security.spec.PKCS8EncodedKeySpec"/></lhs><lhs name\="javax.crypto.KeyGenerator"><rhs name\="javax.crypto.KeyGenerator"/></lhs><lhs name\="java.io.InputStream"><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="java.io.Closeable"><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="java.io.FileInputStream"><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="org.bouncycastle.util.encoders.Base64"><rhs name\="org.bouncycastle.util.encoders.Base64"/></lhs><lhs name\="firstSteps.TryDesEncrypter"><rhs name\="firstSteps.TryDesEncrypter"/></lhs><lhs name\="javax.crypto.Cipher"><rhs name\="javax.crypto.Cipher"/></lhs></history>
+org.eclipse.jdt.ui.text.code_templates_migrated=true

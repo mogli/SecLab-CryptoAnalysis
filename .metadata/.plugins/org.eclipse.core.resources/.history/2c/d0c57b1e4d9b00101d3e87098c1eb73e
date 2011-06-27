@@ -1,0 +1,6 @@
+package firstSteps;
+
+public enum Variables {
+	INSTANCE;
+	
+}

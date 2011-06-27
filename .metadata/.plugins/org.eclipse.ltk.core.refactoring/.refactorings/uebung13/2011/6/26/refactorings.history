@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;public static double calculateTabSucc(int t, int m, int l, long N, double prob)&apos; from &apos;CalculateRTProb.main()&apos; to &apos;CalculateRTProb&apos;&#x0A;- Original project: &apos;uebung13&apos;&#x0A;- Method name: &apos;calculateTabSucc&apos;&#x0A;- Destination type: &apos;CalculateRTProb&apos;&#x0A;- Declared visibility: &apos;public&apos;" comments="false" description="Extract method &apos;calculateTabSucc&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;{CalculateRTProb.java" name="calculateTabSucc" replace="false" selection="304 189" stamp="1308492593110" version="1.0" visibility="1"/>
+</session>

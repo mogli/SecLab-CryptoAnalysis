@@ -1,0 +1,46 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.security.KeyPair;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.Security;
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jce.provider.asymmetric.ec.KeyPairGenerator;
+import org.junit.Test;
+
+import firstSteps.Keyring;
+
+public class KeyRingTest {
+
+	@Test
+	public void testKeyCreation() {
+		Security.addProvider(new BouncyCastleProvider());
+		try {
+			KeyPair originalPair = generateKeyPair();
+			Keyring k = new Keyring();
+			originalPair = k.create("martin", "hallo");
+			KeyPair readPair = k.get("martin", "hallo");
+			
+			System.out.println(originalPair.getPrivate().toString());
+			System.out.println(readPair.getPrivate().toString());
+			
+			assertArrayEquals(originalPair.getPrivate().getEncoded(), readPair.getPrivate().getEncoded());
+			assertArrayEquals(originalPair.getPublic().getEncoded(), readPair.getPublic().getEncoded());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private KeyPair generateKeyPair() throws NoSuchAlgorithmException {
+		java.security.KeyPairGenerator generator =  KeyPairGenerator.getInstance("RSA");
+		generator.initialize(512);
+		KeyPair originalPair = generator.genKeyPair();
+		return originalPair;
+	}
+
+
+}

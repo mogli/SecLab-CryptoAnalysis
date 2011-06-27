@@ -1,0 +1,17 @@
+1308609232201	Rename local variable 'pair'
+1308609992033	Rename local variable 'pubKey'
+1308821896018	Rename local variable 'bla'
+1308822326431	Move compilation unit
+1308822344517	Rename type 'TryDesEncrypter'
+1308822838254	Extract method 'generateKeyPair'
+1308823034672	Rename type 'Variables'
+1308825110314	Rename local variable 'key'
+1308825360522	Rename package 'firstSteps'
+1308825411471	Delete element
+1308826157755	Delete element
+1308826172433	Move compilation unit
+1308826175604	Move compilation unit
+1308826188387	Rename package 'test'
+1308828390902	Delete elements
+1308828456350	Delete elements
+1309040423258	Delete elements

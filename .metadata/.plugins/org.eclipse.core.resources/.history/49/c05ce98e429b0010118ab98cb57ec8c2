@@ -1,0 +1,27 @@
+package firstSteps;
+ 
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.Security;
+
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+
+import org.bouncycastle.jce.provider.*;
+public class Keyring {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Security.addProvider(new BouncyCastleProvider());
+		try {
+			Cipher c = Cipher.getInstance("DES/CBC/PKCS5Padding");
+		} catch (Exception e) 
+			e.printStackTrace();
+
+	}
+
+}

@@ -1,0 +1,6 @@
+package firstSteps;
+
+public interface IKeyring {
+	public IKeyring create(String user, String password);
+	
+}

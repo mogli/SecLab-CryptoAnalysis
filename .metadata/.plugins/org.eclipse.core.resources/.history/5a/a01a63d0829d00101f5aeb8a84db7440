@@ -1,0 +1,18 @@
+package test;
+
+import org.junit.Test;
+
+import firstSteps.Keyring;
+
+public class KeyringEncryptionTest {
+	@Test
+	public void testClass(){
+		Keyring k = new Keyring();
+		
+		String user = "willi", password="willis passwort",
+			myMessage = "Lorem ipsum....EtchedBorder.......pp.Alles super geheim heute hier...";
+		k.create(user, password);
+		
+		
+	}
+}

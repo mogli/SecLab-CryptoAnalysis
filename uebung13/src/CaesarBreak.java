@@ -1,0 +1,130 @@
+/**
+ * Copyright by Martin Weidner (martin.weidner@student.kit.edu) and
+ * 				Sebastian Schlag (sebastian.schlag@student.kit.edu
+ */
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map.Entry;
+import java.util.Set;
+
+
+public class CaesarBreak {
+	private static Set<Character> notMoved = new HashSet<Character>();
+	private static void initNotMoved(){
+		notMoved.add(' ');
+		notMoved.add('.');
+		notMoved.add(',');
+		notMoved.add(';');
+		notMoved.add('\'');
+	}
+	private static String[] allCaesars = {
+		"Esp htqp zq l ctns xly qpww dtnv; lyo hspy dsp qpwe esle spc pyo ocph ytrs, dsp nlwwpo spc zywj olfrsepc ez spc mpo-dtop, lyo dlto, 'Lwhljd mp l rzzo rtcw, lyo T htww wzzv ozhy qczx splgpy lyo hlens zgpc jzf.' Dzzy lqepchlcod dsp dsfe spc pjpd lyo otpo, lyo hld mfctpo ty esp rlcopy; lyo esp wteewp rtcw hpye pgpcj olj ez spc rclgp lyo hpae, lyo hld lwhljd rzzo lyo vtyo ez lww lmzfe spc.",
+		"N pregnva xvat unq n ornhgvshy tneqra, naq va gur tneqra fgbbq n gerr juvpu ober tbyqra nccyrf. Gurfr nccyrf jrer nyjnlf pbhagrq, naq nobhg gur gvzr jura gurl ortna gb tebj evcr vg jnf sbhaq gung rirel avtug bar bs gurz jnf tbar. Gur xvat orpnzr irel natel ng guvf, naq beqrerq gur tneqrare gb xrrc jngpu nyy avtug haqre gur gerr. Gur tneqrare frg uvf ryqrfg fba gb jngpu; ohg nobhg gjryir b'pybpx ur sryy nfyrrc, naq va gur zbeavat nabgure bs gur nccyrf jnf zvffvat.",
+		"Hdbt btc pgt qdgc id vdds ajrz: paa iwtn sd dg ign id sd rdbth gxvwi—paa iwpi upaah id iwtb xh hd bjrw vpxc—paa iwtxg vttht pgt hlpch—paa iwtxg rpgsh pgt igjbeh—idhh iwtb lwxrw lpn ndj lxaa, iwtn lxaa palpnh, axzt eddg ejhh, paxvwi jedc iwtxg atvh, pcs dcan bdkt dc hd bjrw iwt uphitg. Iwt ldgas bpn ktgn axztan cdi palpnh iwxcz du iwtb ph iwtn iwxcz du iwtbhtakth, qji lwpi rpgt iwtn udg iwt ldgas? lwpi rpc xi zcdl pqdji iwt bpiitg?",
+		"Vs nby mcxy iz u qiix, ch u wiohnls u fiha qus izz, luh u zchy mnlyug iz qunyl; uhx ojih nby mnlyug nbyly mniix u gcff. Nby gcffyl'm biomy qum wfimy vs, uhx nby gcffyl, sio gomn ehiq, bux u pyls vyuonczof xuoabnyl. Mby qum, gilyipyl, pyls mblyqx uhx wfypyl; uhx nby gcffyl qum mi jliox iz byl, nbun by ihy xus nifx nby echa iz nby fuhx, qbi omyx ni wigy uhx bohn ch nby qiix, nbun bcm xuoabnyl wiofx mjch aifx ion iz mnluq."
+		, "Re yfevjk wridvi yru fetv re rjj kyrk yru svve r wrzkywlc jvimrek kf yzd r xivrk drep pvrij, slk nrj efn xifnzex fcu reu vmvip urp dfiv reu dfiv lewzk wfi nfib. Yzj drjkvi kyvivwfiv nrj kzivu fw bvvgzex yzd reu svxre kf kyzeb fw glkkzex re veu kf yzd; slk kyv rjj, nyf jrn kyrk jfdv dzjtyzvw nrj ze kyv nzeu, kffb yzdjvcw jcpcp fww, reu svxre yzj aflievp kfnriuj kyv xivrk tzkp, 'Wfi kyviv,' kyflxyk yv, 'Z drp klie dljztzre.'"
+		, "Azq ruzq qhqzuzs m kagzs bduzoqee bgf az tqd nazzqf mzp oxase, mzp iqzf agf fa fmwq m imxw nk tqdeqxr uz m iaap; mzp itqz etq omyq fa m oaax ebduzs ar imfqd, ftmf daeq uz ftq yupef ar uf, etq emf tqdeqxr paiz fa dqef m ituxq. Zai etq tmp m saxpqz nmxx uz tqd tmzp, ituot ime tqd rmhagdufq bxmkftuzs; mzp etq ime mximke faeeuzs uf gb uzfa ftq mud, mzp omfotuzs uf msmuz me uf rqxx."
+		, "Vofr pm o ufsoh tcfsgh rkszh o dccf kccr-qihhsf kwhv vwg kwts obr vwg hkc qvwzrfsb. Hvs pcm kog qozzsr Vobgsz obr hvs uwfz Ufshsz. Vs vor zwhhzs hc pwhs obr hc pfsoy, obr cbqs kvsb ufsoh rsofhv tszz cb hvs zobr, vs qcizr bc zcbusf dfcqifs sjsb rowzm pfsor. Bck kvsb vs hvciuvh cjsf hvwg pm bwuvh wb vwg psr, obr hcggsr opcih wb vwg oblwshm, vs ufcobsr obr gowr hc vwg kwts: 'Kvoh wg hc psqcas ct ig? Vck ofs ks hc tssr cif dccf qvwzrfsb, kvsb ks bc zcbusf vojs obmhvwbu sjsb tcf cifgszjsg?'"
+		, "Lzwjw owjw gfuw s esf sfv s ogesf ozg zsv dgfy af nsaf oakzwv xgj s uzadv. Sl dwfylz lzw ogesf zghwv lzsl Ygv osk stgml lg yjsfl zwj vwkajw. Lzwkw hwghdw zsv s dalldw oafvgo sl lzw tsuc gx lzwaj zgmkw xjge ozauz s khdwfvav ysjvwf ugmdv tw kwwf, ozauz osk xmdd gx lzw egkl twsmlaxmd xdgowjk sfv zwjtk. Al osk, zgownwj, kmjjgmfvwv tq s zayz osdd, sfv fg gfw vsjwv lg yg aflg al twusmkw al twdgfywv lg sf wfuzsfljwkk, ozg zsv yjwsl hgowj sfv osk vjwsvwv tq sdd lzw ogjdv."
+		, "Edsu kfed q jycu jxuhu mqi q mytem mxe xqt jme tqkwxjuhi; edu ev jxuc mqi ruqkjyvkb qdt ydtkijhyeki, jxu ejxuh kwbo qdt bqpo. Jxu cejxuh, xemuluh, belut jxu kwbo qdt bqpo edu ruij, rusqkiu ixu mqi xuh emd tqkwxjuh, qdt ie jxu ejxuh, mxe mqi edbo xuh ijuftqkwxjuh, mqi cqtu je te qbb jxu meha ev jxu xekiu, qdt mqi gkyju jxu Sydtuhubbq ev jxu vqcybo. Xuh ijufcejxuh iudj xuh ekj uluho tqo je iyj ro jxu mubb yd jxu xywx heqt, jxuhu je ifyd kdjyb ixu cqtu xuh vydwuhi rbuut."
+		, "Hgvx nihg t mbfx maxkx ptl t wxtk ebmmex zbke pah ptl ehoxw ur xoxkrhgx pah ehhdxw tm axk, unm fhlm hy tee ur axk zktgwfhmaxk, tgw maxkx ptl ghmabgz matm lax phnew ghm atox zboxg mh max vabew. Hgvx lax ztox axk t ebmmex vti hy kxw oxeoxm, pabva lnbmxw axk lh pxee matm lax phnew gxoxk pxtk tgrmabgz xelx; lh lax ptl teptrl vteexw 'Ebmmex Kxw-Vti.'"
+	};
+	public static void main(String[] args) {
+		initNotMoved();
+		int gruppe=1;
+		for(String s : allCaesars){
+			System.out.println("Gruppe "+gruppe);
+			char[] ss = breakCaesar(s);
+			System.out.println("\t"+String.valueOf(ss));
+			gruppe++;
+		}
+	}
+	// Parameter i: if 1, than the most frequent is delivered, otherwise the second most
+	private static Entry<Character, Integer> getMostFrequent(String s, int i){
+		HashMap<Character, Integer> map = analyzeFrequence(s);
+		Entry<Character, Integer> max = null;
+		for(Entry<Character,Integer> e : map.entrySet())
+			if((max != null && isLetter(e.getKey()) && max.getValue() < e.getValue())||max==null){
+				max = e;
+			}
+		if(i==1)
+			return max;
+		else {		// required if the number of most frequent letters is very close!
+			Entry<Character, Integer> premax = null;
+			map.remove(max.getKey());
+			for(Entry<Character,Integer> e : map.entrySet())
+				if((premax != null && isLetter(e.getKey()) && premax.getValue() < e.getValue())||premax==null){
+					premax = e;
+				}
+			return premax;
+		}
+		
+	
+	}
+	private static boolean isLetter(Character key) {
+		boolean b = (('A'<=key && key<='Z')||('a'<=key && key<='z'))?true:false;
+		return b;
+	}
+	public static char[] breakCaesar(String s) {
+		Entry<Character, Integer> offset1 = getMostFrequent(s,1);
+		Entry<Character, Integer> offset2 = getMostFrequent(s,2);
+		int offset = 'e' - offset1.getKey();
+		int maybeOffset = 'e' - offset2.getKey();
+		boolean tryTwo = false;
+		if(Math.abs(offset1.getValue()-offset2.getValue())<2){
+			tryTwo = true;
+		}
+		char[] ss = s.toCharArray();
+		for(int i=0;i<ss.length;i++){
+			char c=ss[i];
+			if(!notMoved.contains(c)){
+				char newChar = moveBy(offset,c);
+				ss[i] = newChar;
+			}
+		}
+		if(tryTwo){
+			char[] ss2 = s.toCharArray();
+			for(int i=0;i<ss2.length;i++){
+				char c=ss2[i];
+				if(!notMoved.contains(c)){
+					char newChar = moveBy(maybeOffset,c);
+					ss2[i] = newChar;
+				}
+			}
+			System.out.println(maybeOffset +";\t" + String.valueOf(ss2));
+		}
+		System.out.print(offset+"; ");
+		return ss;
+	}
+	private static boolean isSmallLetter(int c){
+		return ((65<=c && c <=90)?false:true);
+	}
+	// Substitute the letter by given offset to other letter
+	private static char moveBy(int offset, char c) {
+		int normalized;
+		if(isSmallLetter(c)){
+			 normalized = (int)c - 96;
+			normalized += offset;
+			if(normalized<=0)
+				normalized = 26 + normalized;
+			return (char) (normalized + 96);
+		}else{
+			 normalized = (int)c - 64;
+			normalized += offset;
+			if(normalized<=0)
+				normalized = 26 + normalized;
+			return (char) (normalized + 64);
+		}
+	}
+	// Statistical analysis of letter frequencies
+	private static HashMap<Character, Integer> analyzeFrequence(String s) {
+		HashMap<Character, Integer> frequence = new HashMap<Character, Integer>();
+		for(char c : s.toCharArray())
+			if(!frequence.containsKey(c))
+				frequence.put(c, 1);
+			else
+				frequence.put(c, frequence.get(c)+1);
+		return frequence;
+	}
+
+}

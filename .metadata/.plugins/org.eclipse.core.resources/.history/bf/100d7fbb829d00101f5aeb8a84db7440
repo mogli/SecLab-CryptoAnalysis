@@ -1,0 +1,18 @@
+package test;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+import firstSteps.Keyring;
+
+public class KeyringEncryptionTest {
+	@Test
+	public void testClass(){
+		Keyring k = new Keyring();
+		
+		String user = "willi", password="willis passwort";
+		k.create(user, password);
+		
+		
+	}
+}

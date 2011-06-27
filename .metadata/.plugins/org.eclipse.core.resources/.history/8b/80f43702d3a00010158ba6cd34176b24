@@ -1,0 +1,54 @@
+
+public class CalculateRTProb {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int t=3000, 
+		m = 400000,
+		l=6;
+		
+		int signs = 36;
+		int min = 3, max = 6;
+		long N=0;
+		double prob = 0;
+		
+		for(int k=min;k<=max;k++)
+			N += Math.pow(signs, k);
+		System.out.println("N="+N);
+		prob = calculateRTSucc(t, m, l, N, prob);
+		System.out.println(l+" tables with " +m+" rows and "+t+" keys per row result in a");
+		System.out.println("Probability of "+ prob);
+	}
+	// Probability calculation for the rainbow approach by Oechselin
+	private static double calculateRTSucc(int t, int m, int l, long N,
+			double prob){
+		prob=1-(m/N);
+		double former_m = m;
+		double new_m;
+		for(int i=2;i<=t;i++){
+			new_m = N*(1-Math.pow(Math.E, (-former_m/N)));
+			prob *= (1-new_m/N);
+			former_m = new_m;
+		}
+		prob = 1-(Math.pow((1-prob),l));
+		return prob;
+	}
+	// Prob calc for table approach by Hellman
+	public static double calculateTabSucc(int t, int m, int l, long N,
+			double prob) {
+		double tByn = t/N;
+		double f = 0;
+		for(int i=1;i<=m; i++){
+			f += tByn;
+			for(int j=0;j<t;j++){
+				prob += Math.pow((1-f),j+1);
+			}
+		}
+		prob /= N;
+		prob = 1-(Math.pow((1-prob),l));
+		return prob;
+	}
+
+}
