@@ -58,9 +58,8 @@ public class CaesarBreak {
 				}
 			return premax;
 		}
-		
-	
 	}
+	
 	private static boolean isLetter(Character key) {
 		boolean b = (('A'<=key && key<='Z')||('a'<=key && key<='z'))?true:false;
 		return b;
